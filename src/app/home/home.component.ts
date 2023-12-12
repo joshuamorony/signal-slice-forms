@@ -88,14 +88,14 @@ export default class HomeComponent {
       requireExplanation: () => {
         const likesSignals = state.likesSignals();
         if (likesSignals === 'no') {
-          this.form.controls.explanation.enable({ emitEvent: false });
           this.form.controls.explanation.addValidators(Validators.required);
         } else {
-          this.form.controls.explanation.disable({ emitEvent: false });
           this.form.controls.explanation.removeValidators(Validators.required);
         }
 
-        this.form.controls.explanation.updateValueAndValidity();
+        this.form.controls.explanation.updateValueAndValidity({
+          emitEvent: false,
+        });
       },
     }),
   });
