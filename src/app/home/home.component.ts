@@ -11,6 +11,7 @@ import {
   switchMap,
   tap,
 } from 'rxjs/operators';
+import { formValues } from '../shared/utils/signal-forms';
 
 @Component({
   standalone: true,
@@ -56,7 +57,7 @@ export default class HomeComponent {
   formState = signalSlice({
     initialState: this.initialFormState,
     sources: [
-      this.form.valueChanges.pipe(map(() => this.form.getRawValue())),
+      formValues(this.form),
       this.formDataLoaded$.pipe(
         tap((data) => this.form.patchValue(data)),
         map(() => ({ status: 'loaded' as const }))
