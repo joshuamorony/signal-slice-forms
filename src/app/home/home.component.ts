@@ -19,7 +19,6 @@ import {
     <form [formGroup]="form" (ngSubmit)="formState.submit()">
       <input type="text" formControlName="name" />
       <select formControlName="likesSignals">
-        <option value="">Select the correct option</option>
         <option value="yes">Yes</option>
         <option value="no">No</option>
       </select>
